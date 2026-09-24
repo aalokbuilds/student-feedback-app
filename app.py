@@ -9,11 +9,13 @@ feedback_list = []
 def index():
     if request.method == "POST":
         name = request.form["name"]
+        email = request.form["email"]
         course = request.form["course"]
         feedback = request.form["feedback"]
 
         feedback_list.append({
             "name": name,
+            "email": email,
             "course": course,
             "feedback": feedback
         })

@@ -9,46 +9,50 @@
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>Student Feedback Application</h1>
+    <h1>Student Feedback Application</h1>
 
-        <form method="POST">
+    <form method="POST">
 
-            <label>Student Name</label>
-            <input type="text" name="name" required>
+        <label>Student Name</label>
+        <input type="text" name="name" required>
 
-            <label>Course</label>
-            <input type="text" name="course" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-            <label>Feedback</label>
-            <textarea name="feedback" rows="5" required></textarea>
+        <label>Course</label>
+        <input type="text" name="course" required>
 
-            <button type="submit">Submit Feedback</button>
+        <label>Feedback</label>
+        <textarea name="feedback" rows="5" required></textarea>
 
-        </form>
+        <button type="submit">Submit Feedback</button>
 
-        <h2>Submitted Feedback</h2>
+    </form>
 
-        {% if feedbacks %}
+    <h2>Submitted Feedback</h2>
 
-            {% for item in feedbacks %}
+    {% if feedbacks %}
 
-                <div class="feedback-card">
-                    <h3>{{ item.name }}</h3>
-                    <p><strong>Course:</strong> {{ item.course }}</p>
-                    <p><strong>Feedback:</strong> {{ item.feedback }}</p>
-                </div>
+        {% for item in feedbacks %}
 
-            {% endfor %}
+            <div class="feedback-card">
+                <h3>{{ item.name }}</h3>
+                <p><strong>Email:</strong> {{ item.email }}</p>
+                <p><strong>Course:</strong> {{ item.course }}</p>
+                <p><strong>Feedback:</strong> {{ item.feedback }}</p>
+            </div>
 
-        {% else %}
+        {% endfor %}
 
-            <p>No feedback submitted yet.</p>
+    {% else %}
 
-        {% endif %}
+        <p>No feedback submitted yet.</p>
 
-    </div>
+    {% endif %}
+
+</div>
 
 </body>
 </html>
