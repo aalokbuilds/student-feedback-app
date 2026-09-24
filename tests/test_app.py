@@ -1,4 +1,4 @@
-from app import app
+from app import app, is_valid_email
 
 
 def test_homepage():
@@ -9,16 +9,22 @@ def test_homepage():
     assert response.status_code == 200
 
 
-def test_valid_email():
-    email = "student@example.com"
+def test_valid_niet_email():
+    email = "student@niet.co.in"
 
-    assert "@" in email
+    assert is_valid_email(email)
 
 
-def test_invalid_email():
-    email = "studentexample.com"
+def test_invalid_email_domain():
+    email = "student@gmail.com"
 
-    assert "@" not in email
+    assert not is_valid_email(email)
+
+
+def test_email_without_at_symbol():
+    email = "studentniet.co.in"
+
+    assert not is_valid_email(email)
 
 
 def test_submit_feedback():
@@ -26,7 +32,7 @@ def test_submit_feedback():
 
     response = client.post("/", data={
         "name": "Aalok",
-        "email": "aalok@example.com",
+        "email": "student@niet.co.in",
         "course": "DevOps",
         "feedback": "Good course"
     })

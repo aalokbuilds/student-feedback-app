@@ -12,6 +12,9 @@
 <div class="container">
 
     <h1>Student Feedback Application</h1>
+    {% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
 
     <form method="POST">
 
@@ -19,7 +22,12 @@
         <input type="text" name="name" required>
 
         <label>Email</label>
-        <input type="email" name="email" required>
+        <input
+            type="email"
+            name="email"
+            placeholder="student@niet.co.in"
+            required
+        >
 
         <label>Course</label>
         <input type="text" name="course" required>
